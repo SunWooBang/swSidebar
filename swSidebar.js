@@ -141,8 +141,8 @@ class SidebarModule {
                 this.enableResizer();
             } else {
                 this.elements.contentContainer.classList.remove('sidebar-open');
-                this.disableResizer();
                 this.elements.sidebar.removeAttribute('style');
+                this.disableResizer();
             }
         } else {
             close();
@@ -161,6 +161,7 @@ class SidebarModule {
      */
     handleToggleSave() {
         this.elements.sidebar.classList.remove('open');
+        this.elements.contentContainer.classList.remove('sidebar-open');
 
         // localStorage 업데이트
         localStorage.removeItem(this.options.storageKey);
