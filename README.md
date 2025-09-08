@@ -223,6 +223,16 @@ sidebar.open();
 sidebar.close();
 ```
 ---
+#### `isToggle()`
+사이드바 토글스위치가 선택되었는지 확인합니다.
+- **반환값**: boolean
+
+```javascript
+if (sidebar.isToggle()) {
+    console.log('사이드바 스위치가 토글되어있습니다.');
+}
+```
+---
 #### `isOpen()`
 사이드바가 열려있는지 확인합니다.
 - **반환값**: boolean
