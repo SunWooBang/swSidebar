@@ -66,6 +66,9 @@ class SidebarModule {
         const html = `
                     <div class="sidebar-module" id="sidebar">
                         <div class="sidebar-resizer" id="sidebarResizer"></div>
+                        <div style="text-align: right;">
+                            <button id="sidebarBtn" class="sidebar-toggle">☰</button>
+                        </div>
                         <div class="sidebar-content" id="sidebarContent">
                             <h3>사이드바 컨텐츠</h3>
                             <p>여기에 동적 컨텐츠가 로드됩니다.</p>
@@ -90,6 +93,7 @@ class SidebarModule {
         this.elements.contentContainer = contentContainer;
         this.elements.sidebar = document.getElementById('sidebar');
         this.elements.toggle = document.getElementById('sidebarToggle');
+        this.elements.toggleBtn = document.getElementById('sidebarBtn');
         this.elements.resizer = document.getElementById('sidebarResizer');
         this.elements.content = document.getElementById('sidebarContent');
     }
@@ -101,6 +105,10 @@ class SidebarModule {
         // 토글 스위치 클릭
         this.elements.toggle.addEventListener('change', () => {
             this.handleToggleSave();
+        });
+
+        this.elements.toggleBtn.addEventListener('click', () => {
+            this.toggleSidebar();
         });
 
         // 리사이저 이벤트

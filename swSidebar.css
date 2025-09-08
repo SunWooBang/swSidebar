@@ -143,6 +143,16 @@
     display: none;
 }
 
+.sidebar-toggle {
+    width: 30px;
+    background-color: white;
+    color: rgb(38, 38, 61);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 /* 리사이징 중 텍스트 선택 방지 */
 .no-select {
     -webkit-user-select: none;
