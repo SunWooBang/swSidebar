@@ -1,0 +1,179 @@
+/* 공통 사이드바 CSS - 수정된 버전 */
+:root {
+    --content-width: 300px;
+}
+
+.container {
+    height: 100vh !important;
+}
+
+.contents {
+    height: 100%;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+.content-container {
+    flex: 1;
+    height: 100%;
+    transition: margin-right 0.3s ease;
+}
+
+/* 사이드바가 열렸을 때 컨텐츠 영역을 왼쪽으로 밀기 */
+.content-container.sidebar-open {
+    margin-right: var(--content-width);
+}
+
+.side-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    /*z-index: 1000;*/
+}
+
+.sidebar-module {
+    width: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.sidebar-module.open {
+    width: var(--content-width);
+}
+
+.sidebar-content {
+    width: var(--content-width);
+    height: 100%;
+    color: white;
+    /*background-color: #fbd1c8;*/
+    padding: 5px;
+}
+
+/* 리사이저 스타일 - 왼쪽으로 이동 */
+.sidebar-resizer {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: transparent;
+    cursor: ew-resize;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.sidebar-resizer:hover,
+.sidebar-resizer.resizing {
+    opacity: 1;
+    background-color: #007bff;
+}
+
+.sidebar-module.resizing {
+    transition: none !important;
+}
+
+.sidebar-resizer::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 3px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+/* 토글 스위치 스타일 */
+.toggle-container {
+    /*width: 50%;*/
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.sidebar-toggle-switch {
+    width: 50px;
+    height: 25px;
+    display: block;
+    position: relative;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 14px 3px rgba(0 0 0 / 15%);
+    cursor: pointer;
+}
+
+.sidebar-toggle-switch .toggle-button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: rgb(38, 38, 61);
+}
+
+.sidebar-toggle-input:checked ~ .sidebar-toggle-switch {
+    background: rgb(38, 38, 61);
+}
+
+.sidebar-toggle-input:checked ~ .sidebar-toggle-switch .toggle-button {
+    left: calc(100% - 25px);
+    background: #fff;
+}
+
+.sidebar-toggle-switch, .toggle-button {
+    transition: all 0.2s ease-in;
+}
+
+.sidebar-toggle-input {
+    display: none;
+}
+
+/* 리사이징 중 텍스트 선택 방지 */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* 버튼 스타일링 */
+.demo-button {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.demo-button:hover {
+    background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

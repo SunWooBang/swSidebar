@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/js/sidebar/swSidebar.css">
+<script src="/js/sidebar/swSidebar.js"></script>
+
+<script language="javascript">
+	$(document).ready(function(){
+		window.sidebar = new SidebarModule({
+			mainContainer: 'main-container',
+			contentContainer: 'content-container',
+			toggleContainer: 'toggle-container',
+			sideContainer: 'side-container',
+			defaultWidth: '450',
+			minWidth: '400',
+			maxWidth: '800'
+		});
+
+		searchAjax(1);
+	});
+
+
+	// 검색
+	function searchAjax(page){
+		// data 불러오는 로직
+	}
+
+
+	function onRowSelected (params) {
+		let param = params.data.wfWjId
+
+		goViewSide(param);
+		sidebar.toggleSidebar();
+	}
+
+	// 사이드바
+	function goViewSide(wfWjId) {
+		let htmlStr = `
+				사이드바 구성 html 코드
+		`;
+		sidebar.setContent(htmlStr);
+
+		$.ajax({
+			type: 'POST',
+			url: '/ticket/wait/formPopup.do',
+			data: {
+				wfWjId: wfWjId,
+				actionType: 'json'
+			},
+			success: function (data) {
+				// 사이드바 내용입력 로직
+			},
+			error: function (error) {
+				console.error("error :: ", error);
+			}
+		})
+	}
+
+	// 팝업
+	function goView(wfWjId) {
+		// 팝업 로직
+	}
+</script>
+
+<input type="hidden" name="toggleId" id="toggleId">
+<div id="main-container">	<#--필수요소-->
+	<div id="content-container">	<#--필수요소-->
+		<div id="toggle-container"></div>	<#--필수요소-->
+		<#-- 메인 컨텐츠 (리스트, 테이블 등)-->
+		<div>
+			<table>
+				....
+			</table>
+		</div>
+
+		<!-- 사이드바 -->
+		<div id="side-container"></div>	<#--필수요소-->
+	</div>
+</div>

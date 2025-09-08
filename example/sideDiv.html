@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/js/sidebar/swSidebar.css">
+<script src="/js/sidebar/swSidebar.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // 사이드바 인스턴스 생성
+        window.sidebar = new SidebarModule({
+            mainContainer: 'main-container',
+            contentContainer: 'content-container',
+            toggleContainer: 'toggle-container',
+            sideContainer: 'side-container'
+        });
+    });
+
+    function setSide() {
+        sidebar.setContent('<div><p style="color: black">Hello World!</p></div>');
+    }
+
+    function onRowSelected(params) {
+        if (sidebar.isOpen()) {
+            sidebar.close();
+        } else {
+            sidebar.open();
+        }
+    }
+
+</script>
+
+<div id="main-container">
+    <div id="content-container">
+        <h2>메인 컨텐츠 영역</h2>
+        <div id="toggle-container"></div>
+        <button onclick="sidebar.toggleSidebar()" class="demo-button">사이드바 열기</button>
+        <button onclick="setSide()" class="demo-button">내용 설정</button>
+    </div>
+    <div id="side-container"></div>
+</div>
