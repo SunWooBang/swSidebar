@@ -1,0 +1,2 @@
+# swSidebar
+Common sidebar module
